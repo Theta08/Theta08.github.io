@@ -10,3 +10,11 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+
+# sidebar-category:
+#   - title: Unity
+#     children:
+#       - title: "rpgGame"
+#         url: "/rpgGame"
+#         category: "rpgGame"
+
