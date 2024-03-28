@@ -13,7 +13,7 @@ toc_sticky: true
 ### 매니저 설정
 <img src="/assets/images/Manager.png" width="90%" height="90%" title="Manager" alt="Manager"/> <br/>
 
-프로젝트를 만들기전에 공통적으로 쓸거를 만들어야 재사용이 덜 되서 Manager오브젝트에 만들어 놓음
+프로젝트를 만들면서 공통적으로 쓸거를 만들어야 재사용이 덜 되서 Manager오브젝트에 만듬   
 게임시작시 게임오브젝트(@Manager)에 AddComponent한다.
 
 ```cs
@@ -55,11 +55,11 @@ public static GameManager Game { get { Init(); return s_gameManager; }}
 `SoundManager` : Audio관리 GameObject를 생성하고 오디오 재생(bgm, efffect)을 실행하는 함수 `play`생성   
 `GameManaer` :  게임실행에 필요한 함수 생성 및 호출 GameData 호출 및 저장, 오브젝트 스폰, 디스폰,   
 게임 일시정지, 재생   
-`PoolManager` : 풀링실행   
+`PoolManager` : 풀링메니저   
 `UIManager` : UI관련 팝업실행, 종료, 켐퍼스 sortingOder 설정, 특정 팝업프리펩 경로 호출   
 <hr/>
 
-### UI_Base
+### 팝업 호출용 UI_Base
 `UI_Base`는 상속받는 클래스에 오브젝트(`BindObject`), 이미지(`BindImage`), 텍스트(`BindText`), 버튼(`BindButton`)함수 바인딩한다. Get `BindEvent`호출로 클릭이벤트 작성
 
 `Bind`함수는 `Enum`을 통해 GameObject.name == Enum.GetNames(type) 오브젝트 찾고 `_objects` 저장

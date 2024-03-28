@@ -58,7 +58,7 @@ toc_sticky: true
 ```
 ### 능력강화
 클릭한 스탯타입을 `UI_AbilityItem.cs`에 변수(`_statType`)로 준다. 
-변수에따라 해당 능력치를 GameData에서 변경한다. 변경 후 다시 실행한다.
+변수에따라 해당 능력치를 GameData에서 변경한다. 변경내용을 업데이트 하기위해 다시 실행한다.
 ```cs 
 
     string currentStat = "";
@@ -78,4 +78,6 @@ toc_sticky: true
 ### 뽑기
 `UI_DrawPopup`프리펩을 호출한다. 스탯(MaxHp, Attack, Def)과 rank(1~3)을 랜덤으로 돌린다.
 rank : rank에 따라 색깔을 변경한다.   
+
 <img src="/assets/images/drawPopup.png" width="40%" height="40%" title="drawPopup" alt="drawPopup"/> <br/>
+<!-- 소스코드 붙이기 -->
