@@ -42,9 +42,13 @@ toc_sticky: true
 <img src="/assets/images/TitleHierarchy.png" width="60%" height="60%" title="TitleHierarchy" alt="TitleHierarchy"/> <br/>
 
 ### 세이브파일 확인
+<hr/>
+
 GameManager에서 로드파일이 있는지확인 없으면 로드 버튼 안 보이게 함
 
 ### 버튼 클릭 이벤트
+<hr/>
+
 `StartButton` : GameData초기화 `UIManager`를 통해 현재팝업 닫고 이름입력 프리팹(`UI_NamePopup`) 호출   
 effect소리 실행   
 

@@ -21,7 +21,8 @@ toc_sticky: true
     * 윈도우 11
     * 화면비율 1280 * 720 portrait 
 
-### 전체영상
+### 시연영상
+[![Video Label](http://img.youtube.com/vi/BnNjLPQfcCs/0.jpg)](https://www.youtube.com/watch?v=BnNjLPQfcCs)
 
 ### Socrce Code 
 <hr/>
@@ -48,6 +49,7 @@ toc_sticky: true
 ### 스탯 설정
 캐릭터오브젝트 호출 후 `BaseController`와 `Stat`를 GetComponent한다.
 <hr/>
+
 ## BaseController
 캐릭터 애니메이션 : 오브젝트상태에따라 애니메이션 생성
 공격타겟 설정 : 오브젝트 콜로이더로 `LayerMask`(player, monster)기준으로 오브젝트를 찾아 `target`으로 설정 

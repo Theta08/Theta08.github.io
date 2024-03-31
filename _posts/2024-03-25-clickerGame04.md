@@ -11,6 +11,8 @@ toc_sticky: true
 #     nav: "sidebar-category"
 ---
 ### 플레이화면
+<hr/>
+
 <img src="/assets/images/playPopup.png" width="40%" height="40%" title="playPopup" alt="playPopup"/> <br/>
 
 바인딩을 위해 enum Texts{...}, Buttons{...} 설정 및 바인딩 (오브젝트 이름과 같게해야함)   
@@ -76,6 +78,8 @@ toc_sticky: true
     }
 ```
 ### 뽑기
+<hr/>
+
 `UI_DrawPopup`프리펩을 호출한다. 스탯(MaxHp, Attack, Def)과 rank(1~3)을 랜덤으로 돌린다.
 rank : rank에 따라 색깔을 변경한다.   
 
