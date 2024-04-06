@@ -55,7 +55,7 @@ public static GameManager Game { get { Init(); return s_gameManager; }}
 `SoundManager` : Audio관리 GameObject를 생성하고 오디오 재생(bgm, efffect)을 실행하는 함수 `play`생성   
 `GameManaer` :  게임실행에 필요한 함수 생성 및 호출 GameData 호출 및 저장, 오브젝트 스폰, 디스폰,   
 게임 일시정지, 재생   
-`PoolManager` : 풀링메니저   
+`PoolManager` : 풀링매니저   
 `UIManager` : UI관련 팝업실행, 종료, 켐퍼스 sortingOder 설정, 특정 팝업프리펩 경로 호출   
 <hr/>
 
