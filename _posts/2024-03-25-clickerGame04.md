@@ -59,22 +59,87 @@ toc_sticky: true
     }
 ```
 ### 능력강화
-클릭한 스탯타입을 `UI_AbilityItem.cs`에 변수(`_statType`)로 준다. 
-변수에따라 해당 능력치를 GameData에서 변경한다. 변경내용을 업데이트 하기위해 다시 실행한다.
+1. 클릭한 스탯타입을 `UI_AbilityItem.cs`에 변수(`_statType`)로 준다. 
+2. 변수에따라 해당 능력치를 `GameData`에서 `NextUpgradeInt`실행 시켜 변경한다. 
+3. 플레이어 스탯에 변경된 GameData를 저장 후 초기화 시킨다.
+4. 클릭한 스탯 UI만 변경내용을 업데이트 하기위해 초기화 시킨다.
+
 ```cs 
 
-    string currentStat = "";
-    switch (_statType)
+    // UI_AbilityItem.cs
+    void OnUpgradeButton()
     {
-        case Define.StatType.MaxHp:
-            currentStat = Managers.Game.SaveData.MaxHp.ToString();
-            break;
-        case Define.StatType.Attack:
-            currentStat = Managers.Game.SaveData.Attack.ToString();
-            break;
-        case Define.StatType.Def:
-            currentStat = Managers.Game.SaveData.Def.ToString();
-            break;
+        if (Managers.Game.SaveData.Money < _pay)
+        {
+            Debug.Log($"돈 {_pay - Managers.Game.SaveData.Money} 부족합니다.");
+            return;
+        }
+        
+        Managers.Sound.Play(Define.Sound.Effect, "Sound_Select");
+    
+        Managers.Game.SaveData.Money -= _pay;
+        Managers.Game.SaveData.NextUpgrade(_statType);
+        // 플레이어 초기화 
+        Managers.Game.RefreshPlayerData();
+
+        // 해당 초기화
+        RefreshUI();
+    }
+    // GamaeData.cs
+    public int NextUpgradeInt(Define.StatType statType)
+    {
+        int result = 0;
+        switch (statType)
+        {
+            case Define.StatType.MaxHp:
+                result = _maxHp + (MaxHpUpgrade.count + 1) * MaxHpUpgrade.rank;
+                break;
+            case Define.StatType.Attack:
+                result = _attack + (AttackUpgrade.count + 1) * AttackUpgrade.rank;
+                break;
+            case Define.StatType.Def:
+                result = _def + (DefUpgrade.count + 1) * DefUpgrade.rank;
+                break;
+        }
+        return result;
+    }
+
+    //PlayerStat.cs
+    public override void GetPlayerStat(GameData gameData)
+    {
+        // 세이브데이터X 경우
+        if (gameData.Attack == 0 || gameData.Reset)
+        {
+            gameData.MaxHp = MaxHp;
+            gameData.Hp = Hp;
+            gameData.Attack = Attack;
+            gameData.Def = Def;
+            gameData.Money = 0;
+            gameData.PlayTime = 0;
+            
+            Upgrade upgrade = new Upgrade{ count = 1, rank = 1 };
+
+            gameData.AttackUpgrade = upgrade;
+            gameData.DefUpgrade = upgrade;
+            gameData.MaxHpUpgrade = upgrade;
+        }
+        else
+        {
+            MaxHp = gameData.MaxHp;
+            Hp = gameData.Hp;
+            Attack = gameData.Attack;
+            Def = gameData.Def;
+        
+            Name = gameData.Name;
+            Money = gameData.Money;
+            PlayTime = gameData.PlayTime;
+
+            AttackUpgrade = gameData.AttackUpgrade;
+            DefUpgrade = gameData.DefUpgrade;;
+            MaxHpUpgrade = gameData.MaxHpUpgrade;;
+        }
+
+        Managers.Game.SaveGame();
     }
 ```
 ### 뽑기
